@@ -16,4 +16,9 @@ public class Userserver {
 	public List<User> getall(){
 		return um.getall();
 	}
+	
+	public void insert(User user) {
+		
+		um.insertUser(user);
+	}
 }

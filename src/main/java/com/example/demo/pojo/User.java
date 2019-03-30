@@ -1,11 +1,36 @@
 package com.example.demo.pojo;
 
-import org.springframework.beans.factory.annotation.Value;
+
+
+
+
+
+
+
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.InitBinder;
+
 
 public class User {
 	private Integer id;
 	private String name;
 	private String sex;
+	
+	
+//	@DateTimeFormat(pattern="yyyy-MM-dd  hh:mm:ss")
+	private Date name1;
+
+
+	public Date getName1() {
+		return name1;
+	}
+
+	public void setName1(Date name1) {
+		this.name1 = name1;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -17,7 +42,7 @@ public class User {
 	public String getName() {
 		return name;
 	}
-	@Value("${name}")
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -27,17 +52,14 @@ public class User {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+	
+	
 	@Override
 	public String toString() {
-		return "person [id=" + id + ", name=" + name + ", sex=" + sex + "]";
+		return "User [id=" + id + ", name=" + name + ", sex=" + sex + ", date=" + name1 + "]";
 	}
-	public User(Integer id, String name, String sex) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.sex = sex;
-	}
+
+	
 	public User() {
-		super();
 	}
 }

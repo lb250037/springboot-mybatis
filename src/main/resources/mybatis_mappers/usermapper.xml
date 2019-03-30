@@ -2,8 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.UserMapper">
 <select id="getall" resultType="com.example.demo.pojo.User">
-	select * from person
+	select name,sex, date as name1 from person
 </select>
+
+<insert id="insertUser" parameterType="com.example.demo.pojo.User">
+
+	<!--insert into person ( name, sex,date) values ('${name}','${sex}',now())-->
+	<!--insert into person ( name, sex,date) values ('${name}','${sex}','${birthday}')-->
+	insert into person ( name, sex,date) values ('${name}','${sex}',STR_TO_DATE('${name1}', '%W %M %d %H:%i:%S CST %Y'))
+	
+	<!--insert into `person` ( `name`, `sex`, `date`) values ('#{name ,jdbcType=VARCHAR}','#{sex,jdbcType=VARCHAR}','#{date,jdbcType=VARCHAR}')-->
+</insert>
 </mapper>
 
 

@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
@@ -8,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,5 +43,24 @@ public class Mycontroller {
 	@ResponseBody
 	public List<User> getall() {
 		return us.getall();
+	}
+	
+	@RequestMapping("/date")
+	@ResponseBody
+	public void getdate() {
+		List<User> list=us.getall();
+		System.out.println(Arrays.toString(list.toArray()));
+		return ;
+	}
+	
+//	@RequestBody 
+	@RequestMapping("/insert")
+	public void insert( User user) {
+		System.out.println("controlle"+user);
+//		System.out.println(birthday);
+//		Date nd=new Date();
+//		user.setName1(nd);
+		us.insert(user);
+		return ;
 	}
 }
